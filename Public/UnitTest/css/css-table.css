@@ -1,0 +1,11 @@
+.page-title {
+	margin-top: 20px;
+}
+
+.table-test-failed-label {
+	color: #f00;
+}
+
+.table-test-success-label {
+	color: #40BE52;
+}

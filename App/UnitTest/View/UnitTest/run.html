@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>ThinkPHP单元测试</title>
+        
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/UnitTest/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/UnitTest/css/css-table.css" />
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="alert alert-warning page-title">
+                单元测试注意点：<br />
+                1、本单元测试覆盖所有的Controller、Service<br />
+                2、调用Controller测试的方法      /test/Controller名   调用Service的方法，/test/Service名字+Service<br />
+                如：   /test/room  测试的是RoomController里面的测试函数，  /test/roomSercvice  测试的是RoomService里面的测试函数
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>    
+                    <tr>
+                        <th>方法名</th>
+                        <th>测试总数</th>
+                        <th>测试通过</th>
+                        <th>测试未通过</th>
+                        <th>功能描述</th>
+                    </tr> 
+                    <tr>
+                        <th></th>
+                        <th>{$test_info['total']}</th>
+                        <th>{$test_info['success']}</th>
+                        <th>{$test_info['fail']}</th>
+                        <th></th>
+                    </tr> 
+                </thead>
+                <tbody>
+                <volist name="test_list" id="list">
+                    <tr>
+                        <th>{$list.name}</th>
+                        <td>{$list.total}</td>
+                        
+                        <if condition="$list['fail'] neq 0">
+                            <td class="table-test-success-label">通过{$list.success}</td> 
+                            <td class="table-test-failed-label">未通过{$list.fail} （错误序号：{$list.fail_list|implode=###, ', '}）</td>
+                        <else />
+                            <td class="table-test-success-label">通过{$list.success}</td>  
+                            <td></td>
+                        </if>
+                        <td>{$list.note}</td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
