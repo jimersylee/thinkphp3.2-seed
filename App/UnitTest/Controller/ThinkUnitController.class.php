@@ -2,7 +2,9 @@
 
 /**
  * @author lizhug <lizhug.steven@gmail.com>
+ * @author Jimersy Lee <jimersylee@gmail.com>
  * @link http://thinkunit.zunar.in
+ * @link www.jimersylee.com
  */
 
 namespace UnitTest\Controller;
@@ -59,6 +61,7 @@ class ThinkUnitController extends Controller {
 
         //dump($classMethod);
 
+
         foreach ($classMethod as $method) {
             
             //判断是否有注释@test
@@ -90,6 +93,12 @@ class ThinkUnitController extends Controller {
                 array_push($this->allTestList, $this->curMethodInfo);
             }
         }
+
+        //获取调用本类的类名
+        $className=get_class($this);
+        $this->assign('UnitTestName',$className);
+        $this->assign('UnitTestDateTime',date('Y-m-d H:i:s'));
+
 
         //总测试信息
         $this->assign("test_info", array(
