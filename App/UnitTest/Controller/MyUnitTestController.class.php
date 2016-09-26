@@ -23,10 +23,10 @@ class MyUnitTestController extends BaseController  {
      */
     public function selfTest(){
         $test=new MyTestController();
-        $result=$test->isOdd(1);//1是否是奇数
+        $result=$test->isOdd(2);//1是否是奇数
         $this->assertTrue($result);//断言为真,是奇数
 
-        $result=$test->isOdd(2);//2是否是奇数
+        $result=$test->isOdd(1);//2是否是奇数
         $this->assertFalse($result);//断言为假,是偶数
 
     }
@@ -60,6 +60,7 @@ class MyUnitTestController extends BaseController  {
      * @note 测试其他未使用ajaxReturn方法的模块
      */
     public function testTest(){
+
         $test=new Test();
         $result=$test->testUnitTest('testUnitTest');
         $this->assertTrue($result);

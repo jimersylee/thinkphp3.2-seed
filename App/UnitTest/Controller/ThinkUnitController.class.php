@@ -18,6 +18,8 @@ class ThinkUnitController extends Controller {
     private $curAssertFailTmp = array();            //当前断言状态缓存
     private $curTestSuccessNumber = 0;          //当前方法成功次数
     private $curTestFailNumber = 0;             //当前方法失败次数
+    private $allTestTime=0;                     //当前方法总耗时
+    private $allTestMemory=0;                   //当前方法总内存使用
     private $allTestSuccessNumber = 0;          //总成功次数
     private $allTestFailNumber = 0;             //总失败次数
 
@@ -66,16 +68,23 @@ class ThinkUnitController extends Controller {
                 $this->curTestSuccessNumber = 0;
                 $this->curTestFailNumber = 0;
                 $this->curAssertFailTmp = array();
+                G($method."Begin");
+                $this->$method();//执行这个函数
+                G($method."End");
+                $time=G($method."Begin",$method."End");
+                $memory=G($method."Begin",$method."End","m");
 
-                $this->$method();         //执行这个函数
-
+                $this->allTestTime=$this->allTestTime+$time;
+                $this->allTestMemory=$this->allTestMemory+$memory;
                 $this->curMethodInfo = array(
                     'name' => $method,          //方法名
                     "note" => $this->getMethodNote($this, $method),
                     "success" => $this->curTestSuccessNumber,
                     "fail" => $this->curTestFailNumber,
                     "total" => $this->curTestSuccessNumber + $this->curTestFailNumber,
-                    "fail_list" => $this->curAssertFailTmp
+                    "fail_list" => $this->curAssertFailTmp,
+                    "time"=>$time,
+                    "memory"=>$memory
                 );
 
                 array_push($this->allTestList, $this->curMethodInfo);
@@ -86,7 +95,9 @@ class ThinkUnitController extends Controller {
         $this->assign("test_info", array(
             "success" => $this->allTestSuccessNumber,
             "fail" => $this->allTestFailNumber,
-            "total" => $this->allTestSuccessNumber + $this->allTestFailNumber
+            "total" => $this->allTestSuccessNumber + $this->allTestFailNumber,
+            "time"=>$this->allTestTime,
+            "memory"=>$this->allTestMemory
         ));
 
         //测试信息列表

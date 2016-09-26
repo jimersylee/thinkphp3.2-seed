@@ -23,14 +23,19 @@
                         <th>测试总数</th>
                         <th>测试通过</th>
                         <th>测试未通过</th>
+
                         <th>功能描述</th>
+						<th>执行时间</th>
+						<th>内存占用</th>
                     </tr> 
                     <tr>
-                        <th></th>
+                        <th>总览</th>
                         <th>{$test_info['total']}</th>
                         <th>{$test_info['success']}</th>
                         <th>{$test_info['fail']}</th>
                         <th></th>
+						<th>{$test_info['time']}s</th>
+						<th>{$test_info['memory']}kb</th>
                     </tr> 
                 </thead>
                 <tbody>
@@ -47,6 +52,8 @@
                             <td></td>
                         </if>
                         <td>{$list.note}</td>
+						<td>{$list.time}s</td>
+						<td>{$list.memory}kb</td>
                     </tr>
                 </volist>
             </tbody>
