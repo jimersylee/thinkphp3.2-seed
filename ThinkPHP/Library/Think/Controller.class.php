@@ -280,7 +280,7 @@ abstract class Controller {
      * @param mixed $data 要返回的数据
      * @param String $type AJAX返回数据格式
      * @param int $json_option 传递给json_encode的option参数
-     * @return void
+     * @return String
      */
     protected function ajaxReturn($data,$type='',$json_option=0) {
         if(empty($type)) $type  =   C('DEFAULT_AJAX_RETURN');
@@ -295,8 +295,10 @@ abstract class Controller {
                 if(strpos($className,C('UNIT_TEST_NAME'))!==false){
                     //是单元测试类调用,则不退出
                     return $Return;
+                }else{
+                    exit($Return);
                 }
-                exit($Return);
+
             case 'XML'  :
                 // 返回xml格式数据
                 header('Content-Type:text/xml; charset=utf-8');

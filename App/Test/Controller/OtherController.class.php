@@ -13,19 +13,7 @@ class OtherController extends Controller
 {
 
 
-    /**
-     * 以try catch方式来截获单元测试的结果,能实现效果,但是在正常环境中调用就麻烦
-     */
-    public function ajaxTestV2(){
-        $data['int']=1;
-        try{
-            $this->ajaxReturn($data);
-        }catch (AjaxReturnEvent $event){
-            $result=$event->getMessage();
-            echo $result;
-        }
 
-    }
 
     /**
      * 在Controller类中的ajaxReturn方法中,加入对子类名的判断,如果子类是单元测试类,则不使用exit结束,改为return
