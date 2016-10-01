@@ -18,4 +18,11 @@ class MyTestController extends Controller
         return $number%2==0?false:true;
 
     }
+
+    //被测试方法示例,原来使用 直接使用 $this->ajaxReturn()  现在必须写成 return $this->ajaxReturn()
+
+    public function ajaxTest(){
+        $data['int']=1;
+        return $this->ajaxReturn($data);
+    }
 }

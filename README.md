@@ -78,7 +78,7 @@ class MyUnitTestController extends BaseController  {
 
     }
 
-    /**
+    /**最初版本,已废弃
      * @test
      * @note 测试使用了ajaxReturn()方法的模块,
      */
@@ -102,7 +102,7 @@ class MyUnitTestController extends BaseController  {
 
     }
 
-    /**
+    /**最初版本,已废弃
      * @test
      * @note 测试其他未使用ajaxReturn方法的模块
      */
@@ -113,4 +113,7 @@ class MyUnitTestController extends BaseController  {
 
 
     }
+    
+    
+    
 ````
