@@ -41,7 +41,7 @@ class MyUnitTestController extends BaseController  {
         $result=$test->isOdd(1);//1是否是奇数
         $this->assertTrue($result);//断言为真,是奇数
 
-        $result=$test->isOdd(1);//2是否是奇数
+        $result=$test->isOdd(2);//2是否是奇数
         $this->assertFalse($result);//断言为假,是偶数
 
     }
@@ -50,13 +50,24 @@ class MyUnitTestController extends BaseController  {
      * @test
      * @note 测试使用了ajaxReturn()方法的模块,
      */
-    public function OtherModuleTest(){
+    public function otherModuleTest(){
 
 
 
         $result=self::$other->ajaxTestV3();
         $this->assert('{"int":1}',$result);//对比两个值是否相同
 
+
+    }
+
+    /**
+     * @test
+     * @note redis缓存测试
+     */
+    public function redisTest(){
+        $test=new MyTestController();
+        $result=$test->redisTest();
+        $this->assert('value',$result);
 
     }
 

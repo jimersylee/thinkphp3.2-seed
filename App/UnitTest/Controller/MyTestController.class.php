@@ -25,4 +25,14 @@ class MyTestController extends Controller
         $data['int']=1;
         return $this->ajaxReturn($data);
     }
+
+    public function redisTest()
+    {
+        //设置缓存
+        S('key','value',60);
+        //读取缓存
+        //echo S('key');
+        return S('key');
+
+    }
 }
