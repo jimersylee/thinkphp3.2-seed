@@ -9,6 +9,18 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
+
+
+require_once "/opt/lampp/htdocs/ThinkPHP3.2.3Custom/vendor/woojean/php-coverage/src/Woojean/PHPCoverage/Injecter.php";
+Woojean\PHPCoverage\Injecter::Inject([
+    'log_dir'=>'/opt/lampp/htdocs/ThinkPHP3.2.3Custom/App/Runtime/coverage/logs',
+    'ignore_file'=>'/opt/lampp/htdocs/ThinkPHP3.2.3Custom/App/Runtime/coverage/ignore.php',
+    'is_repeat' => false
+]);
+
+
+
+
 // 应用入口文件
 
 // 检测PHP环境

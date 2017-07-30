@@ -280,7 +280,7 @@ abstract class Controller {
      * @param mixed $data 要返回的数据
      * @param String $type AJAX返回数据格式
      * @param int $json_option 传递给json_encode的option参数
-     * @return string|void
+     * @return String
      */
     protected function ajaxReturn($data,$type='',$json_option=0) {
         if(empty($type)) $type  =   C('DEFAULT_AJAX_RETURN');
