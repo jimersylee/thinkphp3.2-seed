@@ -9,13 +9,13 @@
 
 namespace UnitTest\Controller;
 use Think\Controller;
-use Think\AjaxReturnEvent;
+use codespy\analyzer;
 
 class ThinkUnitController extends Controller {
 
     private $allTestList = array();
     private $curMethodInfo = array();
-    private $curMethod = "";
+    private $curTestMethod=null;
     private $curAssertIndex = 1;            //当前方法断言序号
     private $curAssertFailTmp = array();            //当前断言状态缓存
     private $curTestSuccessNumber = 0;          //当前方法成功次数
@@ -26,7 +26,15 @@ class ThinkUnitController extends Controller {
     private $allTestFailNumber = 0;             //总失败次数
 
 
-	/**
+
+    public function __construct()
+    {
+
+        parent::__construct();
+
+    }
+
+    /**
      * @description 判断是否是注释了test，添加注释的都是需要做测试的
      * @param        模块, 方法名称
      * @return         boolean 是否添加注释test 
@@ -37,7 +45,10 @@ class ThinkUnitController extends Controller {
         //dump($tmp);
         
         $flag  = preg_match_all('/@test(.*?)\n/',$tmp, $tmp);
-        $tmp   = trim($tmp[0][0]);//返回 test 
+        if($tmp[0][0]==null){
+            return false;
+        }
+        $tmp   = trim($tmp[0][0]);//返回 test
         return $tmp != '@test' ? false : true;
     }
 	
@@ -60,6 +71,7 @@ class ThinkUnitController extends Controller {
         $classMethod = get_class_methods($this);          //获取所有的函数
 
         //dump($classMethod);
+
 
 
         foreach ($classMethod as $method) {
@@ -93,6 +105,9 @@ class ThinkUnitController extends Controller {
                 array_push($this->allTestList, $this->curMethodInfo);
             }
         }
+
+
+
 
         //获取调用本类的类名
         $className=get_class($this);

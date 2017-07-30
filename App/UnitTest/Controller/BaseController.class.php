@@ -7,6 +7,9 @@ Action:add
 */
 
 namespace UnitTest\Controller;
+
+
+use codespy\analyzer;
 class BaseController extends ThinkUnitController{
 
     /**此方法为预留方法,使用者可以在这里自定义载入一些东西,或者配置一些东西
@@ -14,6 +17,7 @@ class BaseController extends ThinkUnitController{
      */
     public function __construct() {
         parent::__construct();
+
 
     }
 }

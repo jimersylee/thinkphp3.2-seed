@@ -13,7 +13,7 @@ namespace UnitTest\Controller;
 use Test\Controller\OtherController;//如果想测试其他使用了ajaxReturn请求的接口,那么在这里use,然后新建一个继承这个类的class
 
 use Test\Controller\IndexController as Test;//如果想测试未使用ajaxReturn方法的模块,直接在这里use
-//use Think\AjaxReturnEvent; //如果要测试调用AjaxReturn()的方法,必须加这句
+
 
 class Other extends OtherController {
 
@@ -64,12 +64,12 @@ class MyUnitTestController extends BaseController  {
      * @test
      * @note redis缓存测试
      */
-    public function redisTest(){
+    /*public function redisTest(){
         $test=new MyTestController();
         $result=$test->redisTest();
         $this->assert('value',$result);
 
-    }
+    }*/
 
 
 

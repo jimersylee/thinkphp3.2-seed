@@ -44,12 +44,12 @@
                     <tr>
                         <th>{$list.name}</th>
                         <td>{$list.total}</td>
-                        
+
                         <if condition="$list['fail'] neq 0">
-                            <td class="table-test-success-label">通过{$list.success}</td> 
+                            <td class="table-test-success-label">通过{$list.success}</td>
                             <td class="table-test-failed-label">未通过{$list.fail} （错误序号：{$list.fail_list|implode=###, ', '}）</td>
                         <else />
-                            <td class="table-test-success-label">通过{$list.success}</td>  
+                            <td class="table-test-success-label">通过{$list.success}</td>
                             <td></td>
                         </if>
                         <td>{$list.note}</td>
